@@ -1,0 +1,28 @@
+{
+  "name": "@midwayjs/ts-analysis",
+  "version": "0.1.0",
+  "description": "@midwayjs/ts-analysis",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tslint -c tslint.json 'src/**/*.ts' & tsc --build",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "minify": "uglifyjs --compress --mangle --output index.min.js -- ./dist/index.js"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^26.0.3",
+    "@types/node": "^14.0.14",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3",
+    "uglify-js": "^3.6.0"
+  },
+  "dependencies": {
+    "typescript": "^3.9.6"
+  },
+  "author": "soar.gy",
+  "license": "MIT"
+}
