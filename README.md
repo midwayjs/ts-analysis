@@ -1,6 +1,26 @@
 # ts-analysis
 TypeScript Code Analysis
 
+## Usage
+```ts
+// Use Class
+import { TsAnalysis } from '@midwayjs/ts-analysis';
+
+async (codePath) => {
+  const analysisInstance = new TsAnalysis(codePath);    // 初始化实例
+  await analysisInstance.start();                       // 分析器启动
+  const result = await analysisInstance.getResult();    // 获取分析结果
+  return result;
+}
+
+// Use Instance
+import { tsAnalysis } from '@midwayjs/ts-analysis';
+
+async (codePath) => {
+  const result = await tsAnalysis(codePath)             // 获取分析结果
+  return result;
+}
+```
 
 ## Result Demo
 ### Decorator
