@@ -1,8 +1,9 @@
 {
   "name": "@midwayjs/ts-analysis",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "@midwayjs/ts-analysis",
-  "main": "./dist/index.js",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],
@@ -29,6 +30,6 @@
   "dependencies": {
     "typescript": "^3.9.6"
   },
-  "author": "soar.gy",
+  "author": "echosoar",
   "license": "MIT"
 }

@@ -1,5 +1,23 @@
 # ts-analysis
-TypeScript Code Analysis
+Analysis TypeScript Code to Json
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@midwayjs/ts-analysis" alt="npm version">
+    <img src="https://img.shields.io/npm/v/@midwayjs/ts-analysis.svg?style=flat" />
+  </a>
+  <a href="./LICENSE" alt="GitHub license">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
+  </a>
+  <a href="https://github.com/midwayjs/midway-serverless/actions?query=workflow%3A%22Node.js+CI%22" alt="Node.js CI">
+    <img src="https://img.shields.io/badge/Node.js%20CI-passing-brightgreen" />
+  </a>
+  <a href="https://github.com/midwayjs/ts-analysis" alt="Activity">
+    <img src="https://img.shields.io/github/commit-activity/m/midwayjs/ts-analysis" />
+  </a>
+  <a href="https://github.com/midwayjs/ts-analysis/graphs/contributors" alt="Contributors">
+    <img src="https://img.shields.io/github/contributors/midwayjs/ts-analysis" />
+  </a>
+</p>
 
 ## Usage
 ```ts
