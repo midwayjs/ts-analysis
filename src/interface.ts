@@ -2,6 +2,10 @@ export interface ITsAnalysisResult {
   decorator: ITsDecorator;
 }
 
+export interface IOptions {
+  decoratorLowerCase?: boolean;
+}
+
 export interface ITsDecorator {
   [decoratorName: string]: ITsDecoratorInfo[];
 }

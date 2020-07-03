@@ -1,7 +1,7 @@
 import * as ts from 'typescript';
 import { globx } from './utils/globx';
 
-import { ITsAnalysisResult, ITsDecoratorInfo, ITsDecorator, ITsNode } from './interface';
+import { ITsAnalysisResult, ITsDecoratorInfo, ITsDecorator, ITsNode, IOptions } from './interface';
 export * from './interface';
 
 export class TsAnalysis {
@@ -9,9 +9,11 @@ export class TsAnalysis {
   private sourcePath: string | string[];
   private result: ITsAnalysisResult = this.initResult();
   private checker: ts.TypeChecker;
+  private options: IOptions;
 
-  constructor(sourcePath: string | string[]) {
+  constructor(sourcePath: string | string[], options?: IOptions) {
     this.sourcePath = sourcePath;
+    this.options = options || {};
   }
 
   public async start(): Promise<void> {
@@ -115,7 +117,10 @@ export class TsAnalysis {
       if (ts.isCallExpression(decorator.expression)) {
         const expressionInfo = this.getExpressionInfo(node, decorator.expression, sourceInfo);
         if (expressionInfo) {
-          const name = expressionInfo.expressionName;
+          let name = expressionInfo.expressionName;
+          if (this.options.decoratorLowerCase) {
+            name = name.toLowerCase();
+          }
           const decoratorInfo: ITsDecoratorInfo = {
             name,
             target,
@@ -346,8 +351,8 @@ export class TsAnalysis {
   }
 }
 
-export const tsAnalysisInstance: (sourcePath: string | string[]) => Promise<ITsAnalysisResult> = async (sourcePath: string | string[]) => {
-  const analysisInstance = new TsAnalysis(sourcePath);
+export const tsAnalysisInstance: (sourcePath: string | string[], options?: IOptions) => Promise<ITsAnalysisResult> = async (sourcePath: string | string[], options?: IOptions) => {
+  const analysisInstance = new TsAnalysis(sourcePath, options);
   await analysisInstance.start();
   return analysisInstance.getResult();
 };
