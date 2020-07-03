@@ -2,6 +2,7 @@ import * as ts from 'typescript';
 import { globx } from './utils/globx';
 
 import { ITsAnalysisResult, ITsDecoratorInfo, ITsDecorator, ITsNode } from './interface';
+export * from './interface';
 
 export class TsAnalysis {
 
@@ -345,7 +346,7 @@ export class TsAnalysis {
   }
 }
 
-export const tsAnalysisInstance: (sourcePath: string) => Promise<ITsAnalysisResult> = async (sourcePath: string) => {
+export const tsAnalysisInstance: (sourcePath: string | string[]) => Promise<ITsAnalysisResult> = async (sourcePath: string | string[]) => {
   const analysisInstance = new TsAnalysis(sourcePath);
   await analysisInstance.start();
   return analysisInstance.getResult();
