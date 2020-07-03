@@ -1,7 +1,7 @@
 import * as ts from 'typescript';
 import { globx } from './utils/globx';
 
-import { ITsAnalysisResult, ITsDecoratorInfo, ITsDecorator, ITsNode } from './index.d';
+import { ITsAnalysisResult, ITsDecoratorInfo, ITsDecorator, ITsNode } from './interface';
 
 export class TsAnalysis {
 
