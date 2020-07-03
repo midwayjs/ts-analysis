@@ -1,4 +1,3 @@
-import { existsSync, statSync } from 'fs';
 import * as ts from 'typescript';
 import { globx } from './utils/globx';
 
@@ -6,27 +5,17 @@ import { ITsAnalysisResult, ITsDecoratorInfo, ITsDecorator, ITsNode } from './in
 
 export class TsAnalysis {
 
-  private sourcePath: string;
+  private sourcePath: string | string[];
   private result: ITsAnalysisResult = this.initResult();
   private checker: ts.TypeChecker;
 
-  constructor(sourcePath: string) {
+  constructor(sourcePath: string | string[]) {
     this.sourcePath = sourcePath;
   }
 
   public async start(): Promise<void> {
-    // if file not exist, then return
-    if (!existsSync(this.sourcePath)) {
-      return;
-    }
-
     // get all ts code
-    let rootNames = [];
-    if (statSync(this.sourcePath).isDirectory()) {
-      rootNames = globx(this.sourcePath, 2, ['.ts']);
-    } else {
-      rootNames = [this.sourcePath];
-    }
+    const rootNames =  globx(this.sourcePath, 2, ['.ts']);
     // Build a program using the set of root file names in fileNames
     const compilerOptions = this.getTsConfigInfo();
     const program = ts.createProgram(rootNames, compilerOptions);

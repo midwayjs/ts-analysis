@@ -1,8 +1,11 @@
 {
   "name": "@midwayjs/ts-analysis",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "@midwayjs/ts-analysis",
   "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "tsc --watch",
     "build": "tslint -c tslint.json 'src/**/*.ts' & tsc --build",

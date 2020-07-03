@@ -1,9 +1,9 @@
 export interface ITsAnalysisResult {
-  decorator: ITsDecorator
+  decorator: ITsDecorator;
 }
 
 export interface ITsDecorator {
-  [decoratorName: string]: ITsDecoratorInfo[]
+  [decoratorName: string]: ITsDecoratorInfo[];
 }
 
 export interface ITsDecoratorInfo {
@@ -11,21 +11,21 @@ export interface ITsDecoratorInfo {
   sourceFile: string;
   params: any[];
   position: ITsPositoin;
-  target: ITsNode,
+  target: ITsNode;
   childDecorators?: {
-    [decoratorName: string]: ITsDecoratorInfo[]
-  }
+    [decoratorName: string]: ITsDecoratorInfo[];
+  };
 }
 
 export interface ITsPositoin {
   start: {
     ln: number;
     col: number
-  },
+  };
   end: {
     ln: number;
     col: number
-  }
+  };
 }
 
 export interface ITsNode {
