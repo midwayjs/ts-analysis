@@ -8,5 +8,6 @@ describe('/test/code.test.ts', () => {
     assert(result.decorator.Provider[0].target.name === 'Test');
     assert(result.decorator.Provider[0].childDecorators.Func[0].target.type === 'method');
     assert(result.decorator.Provider[0].childDecorators.Func[0].target.name === 'handler');
+    assert(result.decorator.Func[0].parent.Provider[0].target.name === 'Test');
   });
 });

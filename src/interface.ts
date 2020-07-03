@@ -12,6 +12,7 @@ export interface ITsDecoratorInfo {
   params: any[];
   position: ITsPositoin;
   target: ITsNode;
+  parent?: ITsDecorator;
   childDecorators?: {
     [decoratorName: string]: ITsDecoratorInfo[];
   };

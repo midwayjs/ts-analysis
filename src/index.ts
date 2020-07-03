@@ -104,7 +104,7 @@ export class TsAnalysis {
   }
 
   // analysis decorator
-  private analysisDecorator(node: ts.Node, target, parent?: ITsDecoratorInfo[]) {
+  private analysisDecorator(node: ts.Node, target, parent?: ITsDecorator) {
     const sourceFile: ts.SourceFile = node.getSourceFile();
     const sourceInfo = {
       sourceFile: sourceFile.fileName,
@@ -121,6 +121,7 @@ export class TsAnalysis {
             sourceFile: sourceInfo.sourceFile,
             params: expressionInfo.params,
             position: expressionInfo.position,
+            parent,
           };
           // insert into result map
           if (!currentDecoratorTypeMap[name]) {
