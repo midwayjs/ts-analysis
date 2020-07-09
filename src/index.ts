@@ -98,6 +98,10 @@ export class TsAnalysis {
       params,
       response,
       position: {
+        range: {
+          start: node.pos,
+          end: node.end,
+        },
         start: this.getPosition(code, node.pos),
         end: this.getPosition(code, node.end),
       },
@@ -169,6 +173,10 @@ export class TsAnalysis {
       expressionName,
       params,
       position: {
+        range: {
+          start: expression.pos,
+          end: expression.end,
+        },
         start: this.getPosition(code, expression.pos),
         end: this.getPosition(code, expression.end),
       },
@@ -192,9 +200,10 @@ export class TsAnalysis {
       return {
         ln,
         col: codeArr[ln]?.length || 0,
+        index: pos,
       };
     } catch (e) {
-      return { ln: 0, col: 0 };
+      return { ln: 0, col: 0, index: 0 };
     }
   }
 

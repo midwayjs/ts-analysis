@@ -23,13 +23,19 @@ export interface ITsDecoratorInfo {
 }
 
 export interface ITsPositoin {
+  range: {
+    start: number;
+    end: number;
+  };
   start: {
     ln: number;
-    col: number
+    col: number;
+    index: number;
   };
   end: {
     ln: number;
-    col: number
+    col: number;
+    index: number;
   };
 }
 
