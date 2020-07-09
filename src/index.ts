@@ -259,7 +259,7 @@ export class TsAnalysis {
   private serializeType(checkerType: ts.Type): any {
     const parameter: any = {};
     const checker: any = this.checker;
-    const type = this.checker.typeToString(checkerType).toLowerCase();
+    const type = checker.typeToString(checkerType).toLowerCase();
     if ((checkerType as any).value !== undefined) {
       parameter.fixed = (checkerType as any).value;
       parameter.type = typeof parameter.fixed;
@@ -268,15 +268,6 @@ export class TsAnalysis {
     } else if (['true', 'false'].indexOf(type) !== -1) {
       parameter.type = 'boolean';
       parameter.fixed = type === 'true';
-    } else if (checkerType.isClassOrInterface()) {
-      parameter.type = 'object';
-      parameter.properties = {};
-      checkerType
-        .getProperties()
-        .map((symbol: ts.Symbol) => this.getParamType(symbol))
-        .forEach((item: any) => {
-          parameter.properties[`${item.name}`] = item;
-        });
     } else if (checkerType.isUnion()) {
       // boolean 也是union类型了
       if ((checkerType as any).intrinsicName === 'boolean') {
@@ -324,8 +315,18 @@ export class TsAnalysis {
         if (properties && properties.length) {
           parameter.type = 'object';
           parameter.properties = {};
-          properties.map((symbol: ts.Symbol) => this.getParamType(symbol)).forEach((item) => {
-            parameter.properties[`${item.name}`] = item;
+          properties.map((symbol: ts.Symbol) => {
+            // Todo
+            if (symbol.escapedName) {
+              return {
+                name: symbol.escapedName,
+              };
+            }
+            return ;
+          }).forEach((item: any) => {
+            if (item?.name) {
+              parameter.properties[`${item.name}`] = item;
+            }
           });
           return parameter;
         }

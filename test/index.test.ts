@@ -10,4 +10,8 @@ describe('/test/docorator.test.ts', () => {
     assert(result.decorator.Provider[0].childDecorators.Func[0].target.name === 'handler');
     assert(result.decorator.Func[0].parent.Provider[0].target.name === 'Test');
   });
+  // it.only('oth', async () => {
+  //   const result = await tsAnalysisInstance(resolve(__dirname, '../../std-service-market/src/'));
+  //   console.log('result', result);
+  // });
 });
